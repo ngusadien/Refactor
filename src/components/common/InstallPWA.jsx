@@ -54,12 +54,12 @@ const InstallPWA = () => {
   return (
     <>
       {/* Mobile Banner (Bottom) */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-2xl sm:hidden">
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-r from-primary-600 to-primary-700 text-white shadow-2xl sm:hidden">
         <div className="px-4 py-3">
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-3 flex-1 min-w-0">
               <div className="flex-shrink-0 w-12 h-12 bg-white rounded-xl flex items-center justify-center">
-                <svg className="w-8 h-8 text-indigo-600" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-8 h-8 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
                 </svg>
               </div>
@@ -71,7 +71,7 @@ const InstallPWA = () => {
             <div className="flex items-center gap-2 flex-shrink-0">
               <button
                 onClick={handleInstall}
-                className="px-4 py-2 bg-white text-indigo-600 rounded-lg text-sm font-semibold hover:bg-gray-100 transition-colors"
+                className="px-4 py-2 bg-white text-primary-600 rounded-lg text-sm font-semibold hover:bg-gray-100 transition-colors"
               >
                 Install
               </button>
@@ -90,12 +90,12 @@ const InstallPWA = () => {
       </div>
 
       {/* Desktop Banner (Top) */}
-      <div className="hidden sm:block fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg">
+      <div className="hidden sm:block fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-primary-600 to-primary-700 text-white shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-4">
               <div className="flex-shrink-0 w-12 h-12 bg-white rounded-xl flex items-center justify-center">
-                <svg className="w-8 h-8 text-indigo-600" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-8 h-8 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
                 </svg>
               </div>
@@ -107,7 +107,7 @@ const InstallPWA = () => {
             <div className="flex items-center gap-3">
               <button
                 onClick={handleInstall}
-                className="px-6 py-2.5 bg-white text-indigo-600 rounded-lg text-sm font-semibold hover:bg-gray-100 transition-colors shadow-md"
+                className="px-6 py-2.5 bg-white text-primary-600 rounded-lg text-sm font-semibold hover:bg-gray-100 transition-colors shadow-md"
               >
                 Install App
               </button>

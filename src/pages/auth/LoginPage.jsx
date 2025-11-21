@@ -50,111 +50,105 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-10">
-      <div >
+    <>
+      {/* Title */}
+      <h2 className="text-2xl font-semibold text-center text-gray-800 mb-6">
+        {t('auth.login')}
+      </h2>
 
-        {/* Logo / Brand */}
-    
+      {/* Session Message */}
+      {sessionMessage && (
+        <div className="mb-4 p-4 bg-yellow-100 text-yellow-800 rounded-lg text-sm border border-yellow-300">
+          {sessionMessage}
+        </div>
+      )}
 
-        {/* Title */}
-        <h2 className="text-2xl font-semibold text-center text-gray-800 mb-6">
-          {t('auth.login')}
-        </h2>
+      {/* Error */}
+      {error && (
+        <div className="mb-4 p-4 bg-red-100 text-red-700 rounded-lg text-sm border border-red-300">
+          <strong>{t('common.error')}:</strong> {error}
+        </div>
+      )}
 
-        {/* Session Message */}
-        {sessionMessage && (
-          <div className="mb-4 p-4 bg-yellow-100 text-yellow-800 rounded-lg text-sm border border-yellow-300">
-            {sessionMessage}
-          </div>
-        )}
+      {/* Form */}
+      <form onSubmit={handleSubmit} className="space-y-5">
 
-        {/* Error */}
-        {error && (
-          <div className="mb-4 p-4 bg-red-100 text-red-700 rounded-lg text-sm border border-red-300">
-            <strong>{t('common.error')}:</strong> {error}
-          </div>
-        )}
-
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-5">
-
-          {/* Email */}
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              {t('auth.email')}
-            </label>
-
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400
-                         focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-              placeholder="you@example.com"
-            />
-          </div>
-
-          {/* Password */}
-          <div>
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              {t('auth.password')}
-            </label>
-
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 
-                         focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-              placeholder="••••••••"
-            />
-          </div>
-
-          {/* Forgot password */}
-          <div className="flex justify-end">
-            <Link
-              to="/forgot-password"
-              className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
-            >
-              {t('auth.forgotPassword')}
-            </Link>
-          </div>
-
-          {/* Submit button */}
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 rounded-lg font-medium 
-                       shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition disabled:opacity-50"
+        {/* Email */}
+        <div>
+          <label
+            htmlFor="email"
+            className="block text-sm font-medium text-gray-700 mb-1"
           >
-            {loading ? t('common.loading') : t('auth.login')}
-          </button>
-        </form>
+            {t('auth.email')}
+          </label>
 
-        {/* Register link */}
-        <p className="mt-6 text-center text-sm text-gray-600">
-          {t('auth.dontHaveAccount')}{' '}
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400
+                       focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+            placeholder="you@example.com"
+          />
+        </div>
+
+        {/* Password */}
+        <div>
+          <label
+            htmlFor="password"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
+            {t('auth.password')}
+          </label>
+
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400
+                       focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+            placeholder="••••••••"
+          />
+        </div>
+
+        {/* Forgot password */}
+        <div className="flex justify-end">
           <Link
-            to="/register"
-            className="text-indigo-600 hover:text-indigo-500 font-medium"
+            to="/forgot-password"
+            className="text-sm font-medium text-blue-600 hover:text-primary-700"
           >
-            {t('auth.register')}
+            {t('auth.forgotPassword')}
           </Link>
-        </p>
-      </div>
-    </div>
+        </div>
+
+        {/* Submit button */}
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full bg-primary-600 hover:bg-primary-700 text-white py-2.5 rounded-lg font-medium
+                     shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 transition disabled:opacity-50"
+        >
+          {loading ? t('common.loading') : t('auth.login')}
+        </button>
+      </form>
+
+      {/* Register link */}
+      <p className="mt-6 text-center text-sm text-gray-600">
+        {t('auth.dontHaveAccount')}{' '}
+        <Link
+          to="/register"
+          className="text-blue-600 hover:text-primary-700 font-medium"
+        >
+          {t('auth.register')}
+        </Link>
+      </p>
+    </>
   );
 };
 

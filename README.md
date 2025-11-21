@@ -51,7 +51,7 @@ This is a  refactoring of the Sokoni Africa marketplace from vanilla JavaScript 
 
 ### Backend (Node.js + Express + MongoDB) 
 
-#### Database Models (100% Complete)
+#### Database Models 
 -  User (auth, profile, KYC, settings)
 -  Product (enhanced with categories, warehouse, ratings)
 -  Category (hierarchical support)
@@ -96,7 +96,7 @@ This is a  refactoring of the Sokoni Africa marketplace from vanilla JavaScript 
 ### Prerequisites
 - Node.js 18+
 - MongoDB 6+
-- npm or yarn
+- npm 
 
 ### Installation
 

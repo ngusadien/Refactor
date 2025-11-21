@@ -47,7 +47,7 @@ const RegisterPage = () => {
   };
 
   return (
-    <div>
+    <>
       <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
         {t('auth.register')}
       </h2>
@@ -77,7 +77,7 @@ const RegisterPage = () => {
             onChange={handleChange}
             required
             className="input-field"
-            placeholder="John Doe"
+            placeholder="Ngusa dien"
           />
         </div>
 
@@ -109,7 +109,7 @@ const RegisterPage = () => {
             onChange={handleChange}
             required
             className="input-field"
-            placeholder="+254 700 000 000"
+            placeholder="+255 700 000 000"
           />
         </div>
 
@@ -159,12 +159,12 @@ const RegisterPage = () => {
       <div className="mt-6 text-center">
         <p className="text-sm text-gray-600">
           {t('auth.alreadyHaveAccount')}{' '}
-          <Link to="/login" className="text-primary-600 hover:text-primary-700 font-medium">
+          <Link to="/login" className="text-blue-600 hover:text-primary-700 font-medium">
             {t('auth.login')}
           </Link>
         </p>
       </div>
-    </div>
+    </>
   );
 };
 

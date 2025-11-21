@@ -103,7 +103,7 @@ const SettingsPage = () => {
               className="mr-3"
             />
             <div className="flex items-center gap-3">
-              <svg className="w-6 h-6 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
               </svg>
               <p className="font-medium text-gray-900 dark:text-gray-100">{t('settings.dark')}</p>
