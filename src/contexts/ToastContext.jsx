@@ -124,11 +124,11 @@ const Toast = ({ toast, onClose }) => {
         typeStyles[type] || typeStyles.info
       }`}
     >
-      <div className="flex-shrink-0">{icons[type] || icons.info}</div>
+      <div className="shrink-0">{icons[type] || icons.info}</div>
       <p className="flex-1 text-sm font-medium">{message}</p>
       <button
         onClick={() => onClose(id)}
-        className="flex-shrink-0 hover:opacity-75 transition-opacity"
+        className="shrink-0 hover:opacity-75 transition-opacity"
         aria-label="Close"
       >
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

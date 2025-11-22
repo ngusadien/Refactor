@@ -126,7 +126,7 @@ const ProductUploadPage = () => {
       });
 
       alert('Product uploaded successfully!');
-      navigate('/products');
+      navigate('/');
     } catch (error) {
       console.error('Error uploading product:', error);
       console.log(error);
@@ -143,7 +143,7 @@ const ProductUploadPage = () => {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Upload New Product</h1>
-          <p className="text-gray-600">Fill in the details to list your product on Sokoni Africa</p>
+          <p className="text-gray-600">Fill in the details to list your product on Sokoni </p>
         </div>
       </div>
 
@@ -318,7 +318,7 @@ const ProductUploadPage = () => {
               type="text"
               value={formData.location}
               onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-              placeholder="e.g., Nairobi, Kenya"
+              placeholder="e.g., Mwanza, Tanzania"
               className="input-field w-full"
             />
           </div>

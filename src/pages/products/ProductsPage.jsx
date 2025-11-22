@@ -72,9 +72,10 @@ const ProductsPage = () => {
             <Link
               key={`${product._id || product.id}-${index}`}
               to={`/products/${product._id || product.id}`}
-              className="card bg-white  hover:shadow-lg transition-shadow duration-200 p-3 sm:p-4"
+              className="card bg-white hover:shadow-lg transition-shadow duration-200 p-3 sm:p-4 flex flex-col h-full"
             >
-              <div className="aspect-square bg-gray-200 dark:bg-gray-700 rounded-lg mb-2 sm:mb-4 overflow-hidden">
+              {/* Image - Fixed aspect ratio */}
+              <div className="aspect-square bg-gray-200 dark:bg-gray-700 rounded-lg mb-2 sm:mb-3 overflow-hidden flex-shrink-0">
                 {getProductImageUrl(product) ? (
                   <img
                     src={getProductImageUrl(product)}
@@ -86,28 +87,37 @@ const ProductsPage = () => {
                     }}
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center text-gray-400 dark:text-gray-500">
+                  <div className="w-full h-full flex items-center justify-center text-gray-400 dark:text-gray-500 text-xs">
                     No Image
                   </div>
                 )}
               </div>
-              <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-1 sm:mb-2 line-clamp-2 text-sm sm:text-base">
-                {product.title}
-              </h3>
-              {product.description && (
-                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-1 sm:mb-2 line-clamp-2 hidden sm:block">
-                  {product.description}
+
+              {/* Content - Grows to fill space */}
+              <div className="flex flex-col flex-grow">
+                {/* Title - Fixed 2 lines */}
+                <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-1 sm:mb-2 line-clamp-2 text-sm sm:text-base h-10 sm:h-12">
+                  {product.title}
+                </h3>
+
+                {/* Description - Fixed 2 lines, hidden on mobile */}
+                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-2 line-clamp-2 hidden sm:block h-10">
+                  {product.description || '\u00A0'}
                 </p>
-              )}
-              <p className="text-primary-600 dark:text-primary-400 font-bold text-sm sm:text-base">
-                TSh {product.price?.toLocaleString()}
-              </p>
-              <button
-                onClick={(e) => handleAddToCart(e, product)}
-                className="mt-2 sm:mt-4 w-full btn-primary text-xs sm:text-sm py-1.5 sm:py-2"
-              >
-                {t('products.addToCart')}
-              </button>
+
+                {/* Price and Button - Pushed to bottom */}
+                <div className="mt-auto">
+                  <p className="text-primary-600 dark:text-primary-400 font-bold text-sm sm:text-base mb-2">
+                    TSh {product.price?.toLocaleString()}
+                  </p>
+                  <button
+                    onClick={(e) => handleAddToCart(e, product)}
+                    className="w-full btn-primary text-xs sm:text-sm py-1.5 sm:py-2"
+                  >
+                    {t('products.addToCart')}
+                  </button>
+                </div>
+              </div>
             </Link>
           ))}
         </div>

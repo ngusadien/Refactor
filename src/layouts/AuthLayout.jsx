@@ -27,7 +27,7 @@ const AuthLayout = () => {
         {/* 4. Footer */}
         <div className="mt-6 sm:mt-8 text-center text-xs sm:text-sm text-gray-500">
           <p>
-            &copy; 2025 <span className="font-semibold">Sokoni Africa</span>. {t('common.allRightsReserved')}
+            &copy; 2025 <span className="font-semibold">Sokoni </span>. {t('common.allRightsReserved')}
           </p>
         </div>
       </div>

@@ -118,9 +118,10 @@ const HomePage = () => {
               <Link
                 key={product._id || product.id}
                 to={`/products/${product._id || product.id}`}
-                className="card hover:shadow-lg transition-shadow duration-200"
+                className="card hover:shadow-lg transition-shadow duration-200 flex flex-col h-full"
               >
-                <div className="aspect-square bg-gray-200 rounded-lg mb-4 overflow-hidden">
+                {/* Image - Fixed aspect ratio */}
+                <div className="aspect-square bg-gray-200 rounded-lg mb-4 overflow-hidden shrink-0">
                   {product.image ? (
                     <img
                       src={product.image}
@@ -133,12 +134,16 @@ const HomePage = () => {
                     </div>
                   )}
                 </div>
-                <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2">
-                  {product.title}
-                </h3>
-                <p className="text-primary-600 font-bold">
-                  KSh {product.price?.toLocaleString()}
-                </p>
+
+                {/* Content - Pushed to bottom */}
+                <div className="mt-auto">
+                  <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2 h-12">
+                    {product.title}
+                  </h3>
+                  <p className="text-primary-600 font-bold">
+                    KSh {product.price?.toLocaleString()}
+                  </p>
+                </div>
               </Link>
             ))}
           </div>
