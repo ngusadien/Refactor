@@ -49,7 +49,7 @@ const RegisterPage = () => {
   return (
     <>
       <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-        {t('auth.register')}
+        {t('auth.signUp')}
       </h2>
 
       {error && (
@@ -152,15 +152,15 @@ const RegisterPage = () => {
           disabled={loading}
           className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {loading ? t('common.loading') : t('auth.register')}
+          {loading ? t('common.loading') : t('auth.signUp')}
         </button>
       </form>
 
       <div className="mt-6 text-center">
         <p className="text-sm text-gray-600">
-          {t('auth.alreadyHaveAccount')}{' '}
-          <Link to="/login" className="text-blue-600 hover:text-primary-700 font-medium">
-            {t('auth.login')}
+          {t('auth.alreadyHaveAccount').split('Sign in')[0]}
+          <Link to="/login" className="text-blue-600 hover:text-primary-700 font-medium ml-1">
+            {t('auth.signIn')}
           </Link>
         </p>
       </div>

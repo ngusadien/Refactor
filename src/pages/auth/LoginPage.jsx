@@ -53,7 +53,7 @@ const LoginPage = () => {
     <>
       {/* Title */}
       <h2 className="text-2xl font-semibold text-center text-gray-800 mb-6">
-        {t('auth.login')}
+        {t('auth.signIn')}
       </h2>
 
       {/* Session Message */}
@@ -131,10 +131,9 @@ const LoginPage = () => {
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-primary-600 hover:bg-primary-700 text-white py-2.5 rounded-lg font-medium
-                     shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 transition disabled:opacity-50"
+          className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {loading ? t('common.loading') : t('auth.login')}
+          {loading ? t('common.loading') : t('auth.signIn')}
         </button>
       </form>
 
@@ -149,16 +148,11 @@ const LoginPage = () => {
           </div>
         </div>
 
-        <Link
-          to="/register"
-          className="block w-full bg-white border-2 border-primary-600 text-primary-600 hover:bg-primary-50
-                     py-2.5 rounded-lg font-medium text-center shadow-sm transition"
-        >
-          {t('auth.register')}
-        </Link>
-
-        <p className="text-center text-xs text-gray-500">
-          {t('auth.dontHaveAccount')}
+        <p className="text-center text-sm text-gray-600">
+          {t('auth.dontHaveAccount').split('Sign up')[0]}
+          <Link to="/register" className="text-blue-600 hover:text-primary-700 font-medium ml-1">
+            {t('auth.signUp')}
+          </Link>
         </p>
       </div>
     </>

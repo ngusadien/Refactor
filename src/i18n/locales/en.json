@@ -17,11 +17,14 @@
     "next": "Next",
     "previous": "Previous",
     "close": "Close",
-    "confirm": "Confirm"
+    "confirm": "Confirm",
+    "allRightsReserved": "All rights reserved"
   },
   "auth": {
     "login": "Login",
+    "signIn": "Sign in",
     "register": "Register",
+    "signUp": "Sign up",
     "logout": "Logout",
     "email": "Email",
     "phone": "Phone Number",
@@ -30,8 +33,8 @@
     "newPassword": "New Password",
     "forgotPassword": "Forgot Password?",
     "backToLogin": "Back to Login",
-    "dontHaveAccount": "Don't have an account?",
-    "alreadyHaveAccount": "Already have an account?",
+    "dontHaveAccount": "Don't have an account? Sign up",
+    "alreadyHaveAccount": "Already have an account? Sign in",
     "verifyOTP": "Verify OTP",
     "enterOTP": "Enter the OTP sent to your phone/email",
     "resendOTP": "Resend OTP"
