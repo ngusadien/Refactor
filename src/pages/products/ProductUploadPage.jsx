@@ -94,43 +94,60 @@ const ProductUploadPage = () => {
     setLoading(true);
 
     try {
-      // Create FormData with all product data and image
-      const uploadFormData = new FormData();
-      uploadFormData.append('title', formData.title);
-      uploadFormData.append('description', formData.description);
-      uploadFormData.append('price', parseFloat(formData.price));
-      uploadFormData.append('stock', parseInt(formData.stock) || 0);
+      // Step 1: Upload image to backend (which uploads to Cloudinary)
+      setUploadProgress(10);
 
-      if (formData.category) {
-        uploadFormData.append('category', formData.category);
-      }
-      if (formData.location) {
-        uploadFormData.append('location', formData.location);
-      }
-      if (formData.condition) {
-        uploadFormData.append('condition', formData.condition);
-      }
+      const imageFormData = new FormData();
+      imageFormData.append('file', formData.imageFile);
+      imageFormData.append('category', formData.category || 'general');
 
-      // Append image file
-      uploadFormData.append('image', formData.imageFile);
-
-      // Upload product with image in single request
-      await api.post('/products', uploadFormData, {
+      const imageUploadResponse = await api.post('/cloudinary/product', imageFormData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
         onUploadProgress: (progressEvent) => {
-          const progress = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-          setUploadProgress(progress);
+          const progress = Math.round((progressEvent.loaded * 60) / progressEvent.total);
+          setUploadProgress(10 + progress);
         },
       });
 
+      setUploadProgress(70);
+
+      // Step 2: Create product with Cloudinary image URL
+      const productData = {
+        title: formData.title,
+        description: formData.description,
+        price: parseFloat(formData.price),
+        stock: parseInt(formData.stock) || 0,
+        image: imageUploadResponse.data.url,
+        imagePublicId: imageUploadResponse.data.publicId,
+      };
+
+      if (formData.category) {
+        productData.category = formData.category;
+      }
+      if (formData.location) {
+        productData.location = formData.location;
+      }
+      if (formData.condition) {
+        productData.condition = formData.condition;
+      }
+
+      setUploadProgress(80);
+
+      // Upload product data to backend
+      await api.post('/products', productData, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      setUploadProgress(100);
       alert('Product uploaded successfully!');
       navigate('/');
     } catch (error) {
       console.error('Error uploading product:', error);
-      console.log(error);
-      alert(error.response?.data?.message || 'Failed to upload product');
+      alert(error.response?.data?.message || error.message || 'Failed to upload product');
     } finally {
       setLoading(false);
       setUploadProgress(0);

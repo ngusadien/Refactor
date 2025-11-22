@@ -17,6 +17,7 @@ const ProductsPage = () => {
 
   useEffect(() => {
     // Only fetch if no category filter is set (CategoriesBar will handle category fetching)
+    console.log("product ",getProductImageUrl(products[0]));
     if (!filters.category) {
       dispatch(fetchProducts());
     }
@@ -75,7 +76,7 @@ const ProductsPage = () => {
               className="card bg-white hover:shadow-lg transition-shadow duration-200 p-3 sm:p-4 flex flex-col h-full"
             >
               {/* Image - Fixed aspect ratio */}
-              <div className="aspect-square bg-gray-200 dark:bg-gray-700 rounded-lg mb-2 sm:mb-3 overflow-hidden flex-shrink-0">
+              <div className="aspect-square bg-gray-200 dark:bg-gray-700 rounded-lg mb-2 sm:mb-3 overflow-hidden shrink-0">
                 {getProductImageUrl(product) ? (
                   <img
                     src={getProductImageUrl(product)}
@@ -94,7 +95,7 @@ const ProductsPage = () => {
               </div>
 
               {/* Content - Grows to fill space */}
-              <div className="flex flex-col flex-grow">
+              <div className="flex flex-col grow">
                 {/* Title - Fixed 2 lines */}
                 <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-1 sm:mb-2 line-clamp-2 text-sm sm:text-base h-10 sm:h-12">
                   {product.title}
