@@ -97,12 +97,12 @@ const ProductsPage = () => {
               {/* Content - Grows to fill space */}
               <div className="flex flex-col grow">
                 {/* Title - Fixed 2 lines */}
-                <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-1 sm:mb-2 line-clamp-2 text-sm sm:text-base h-10 sm:h-12">
+                <h3 className="font-semibold text-gray-900 mb-1 sm:mb-2 line-clamp-2 text-sm sm:text-base h-10 sm:h-12">
                   {product.title}
                 </h3>
 
                 {/* Description - Fixed 2 lines, hidden on mobile */}
-                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-2 line-clamp-2 hidden sm:block h-10">
+                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-500 mb-2 line-clamp-2 hidden sm:block h-10">
                   {product.description || '\u00A0'}
                 </p>
 
