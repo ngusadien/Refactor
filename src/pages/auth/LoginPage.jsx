@@ -138,16 +138,29 @@ const LoginPage = () => {
         </button>
       </form>
 
-      {/* Register link */}
-      <p className="mt-6 text-center text-sm text-gray-600">
-        {t('auth.dontHaveAccount')}{' '}
+      {/* Register section */}
+      <div className="mt-6 space-y-3">
+        <div className="relative">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-gray-300"></div>
+          </div>
+          <div className="relative flex justify-center text-sm">
+            <span className="px-2 bg-white text-gray-500">Or</span>
+          </div>
+        </div>
+
         <Link
           to="/register"
-          className="text-blue-600 hover:text-primary-700 font-medium"
+          className="block w-full bg-white border-2 border-primary-600 text-primary-600 hover:bg-primary-50
+                     py-2.5 rounded-lg font-medium text-center shadow-sm transition"
         >
           {t('auth.register')}
         </Link>
-      </p>
+
+        <p className="text-center text-xs text-gray-500">
+          {t('auth.dontHaveAccount')}
+        </p>
+      </div>
     </>
   );
 };

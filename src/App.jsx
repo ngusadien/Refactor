@@ -7,6 +7,8 @@ import { STORAGE_KEYS, THEMES } from './constants';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/auth/LoginPage';
 import RegisterPage from './pages/auth/RegisterPage';
+import ForgotPasswordPage from './pages/auth/ForgotPasswordPage';
+import ResetPasswordPage from './pages/auth/ResetPasswordPage';
 import ProductsPage from './pages/products/ProductsPage';
 import ProductDetailPage from './pages/products/ProductDetailPage';
 import ProductUploadPage from './pages/products/ProductUploadPage';
@@ -104,6 +106,22 @@ function App() {
             element={
               <PublicRoute>
                 <RegisterPage />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/forgot-password"
+            element={
+              <PublicRoute>
+                <ForgotPasswordPage />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/reset-password"
+            element={
+              <PublicRoute>
+                <ResetPasswordPage />
               </PublicRoute>
             }
           />

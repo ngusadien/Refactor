@@ -65,6 +65,30 @@ export const logout = createAsyncThunk('auth/logout', async (_, { rejectWithValu
   }
 });
 
+export const forgotPassword = createAsyncThunk(
+  'auth/forgotPassword',
+  async (email, { rejectWithValue }) => {
+    try {
+      const response = await api.post(API_ENDPOINTS.AUTH.FORGOT_PASSWORD, { email });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data?.message || 'Failed to send reset link');
+    }
+  }
+);
+
+export const resetPassword = createAsyncThunk(
+  'auth/resetPassword',
+  async ({ token, password }, { rejectWithValue }) => {
+    try {
+      const response = await api.post(API_ENDPOINTS.AUTH.RESET_PASSWORD, { token, password });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data?.message || 'Failed to reset password');
+    }
+  }
+);
+
 // Load user from localStorage
 const loadUserFromStorage = () => {
   try {
@@ -82,6 +106,8 @@ const initialState = {
   loading: false,
   error: null,
   otpRequired: false,
+  resetEmailSent: false,
+  passwordResetSuccess: false,
 };
 
 const authSlice = createSlice({
@@ -94,6 +120,11 @@ const authSlice = createSlice({
     setUser: (state, action) => {
       state.user = action.payload;
       state.isAuthenticated = true;
+    },
+    clearResetState: (state) => {
+      state.resetEmailSent = false;
+      state.passwordResetSuccess = false;
+      state.error = null;
     },
   },
   extraReducers: (builder) => {
@@ -147,9 +178,39 @@ const authSlice = createSlice({
         state.isAuthenticated = false;
         state.loading = false;
         state.error = null;
+      })
+      // Forgot Password
+      .addCase(forgotPassword.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+        state.resetEmailSent = false;
+      })
+      .addCase(forgotPassword.fulfilled, (state) => {
+        state.loading = false;
+        state.resetEmailSent = true;
+      })
+      .addCase(forgotPassword.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+        state.resetEmailSent = false;
+      })
+      // Reset Password
+      .addCase(resetPassword.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+        state.passwordResetSuccess = false;
+      })
+      .addCase(resetPassword.fulfilled, (state) => {
+        state.loading = false;
+        state.passwordResetSuccess = true;
+      })
+      .addCase(resetPassword.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+        state.passwordResetSuccess = false;
       });
   },
 });
 
-export const { clearError, setUser } = authSlice.actions;
+export const { clearError, setUser, clearResetState } = authSlice.actions;
 export default authSlice.reducer;
